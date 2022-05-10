@@ -1,0 +1,20 @@
+class Solution
+{
+    public:
+    void inorder(Node* root,vector<int>&ans)
+    {
+        if(!root)
+           return;
+        inorder(root->left,ans);
+        ans.push_back(root->data);
+        inorder(root->right,ans);
+    }
+    int kthLargest(Node *root, int k)
+    {
+        vector<int>ans;
+        inorder(root,ans);
+        if(ans.size()<k)
+           return -1;
+        return ans[ans.size()-k];
+    }
+};
